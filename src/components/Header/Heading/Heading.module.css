@@ -1,0 +1,15 @@
+.heading {
+    order: 1;
+    grid-column: 1/4;
+    text-align: center;
+    font-size: 22px;
+}
+
+@media (min-width: 768px) {
+    .heading {
+        order: 0;
+        grid-column: auto;
+        text-align: center;
+        font-size: 26px;
+    }
+}
