@@ -1,5 +1,70 @@
-.list {
-    display: flex;
-    gap: 15px;
+.container {
+    max-width: 100%;
+    position: relative;
+    z-index: 5;
+    margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.wrapperBtn {
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.btn {
+    width: 100%;
+    text-align: left;
+    border-width: 0;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: var(--white);
+}
+
+.btn:hover {
+    background-color: var(--greyE6);
+}
+
+.btn:hover svg{
+    color: var(--orange)
+}
+
+.list {
+    overflow: hidden;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    margin-bottom: 30px;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+}
+
+.item {
+    border-bottom: 1px solid var(--greyE6);
+}
+
+.item:last-child {
+    border-bottom: 0;
+}
+
+
+@media (min-width: 768px) {
+    .container {
+        background-color: var(--white);
+    }
+
+    .list {
+        flex-wrap: wrap;
+        position: static;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .item {
+        border: none;
+    }
 }
