@@ -46,5 +46,6 @@ Text.propTypes = {
     PropTypes.string,
     PropTypes.object,
     PropTypes.array,
+    PropTypes.any,
   ]),
 };
