@@ -25,7 +25,6 @@ export const useToken = (state) => {
     if (token) {
       localStorage.removeItem('bearer');
       window.location.href = location.origin;
-      // не уверена, что именно так нужно было удалить авторизацию
     }
   };
 

@@ -1,48 +1,26 @@
 import style from './Auth.module.css';
-import PropTypes from 'prop-types';
 import {ReactComponent as LoginIcon} from './img/login.svg';
 import {urlAuth} from '../../../api/auth';
 import {Text} from '../../../UI/Text';
-import {useEffect, useState} from 'react';
-import {URL_API} from '../../../api/const';
+import {useState, useContext} from 'react';
+import {tokenContext} from '../../../context/tokenContext';
+import {authContext} from '../../../context/authContext';
 
-export const Auth = ({token, delToken}) => {
-  const [auth, setAuth] = useState({});
+export const Auth = () => {
+  const {delToken} = useContext(tokenContext);
   const [showBtn, setShowBtn] = useState(false);
-
-  useEffect(() => {
-    if (!token) return;
-
-    fetch(`${URL_API}/api/v1/me`, {
-      headers: {
-        Authorization: `bearer ${token}`,
-      },
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(response.status);
-        }
-
-        return response.json();
-      })
-      .then(({name, icon_img: iconImg}) => {
-        const img = iconImg.replace(/\?.*$/, '');
-        setAuth({name, img});
-      })
-      .catch(error => {
-        if (error.message === '401') {
-          delToken();
-          setAuth({});
-        }
-      });
-  }, [token]);
-
-  const handleClick = () => {
+  const {auth, clearAuth} = useContext(authContext);
+  const getOut = () => {
     if (!showBtn) {
       setShowBtn(true);
     } else {
       setShowBtn(false);
     }
+  };
+
+  const logOut = () => {
+    delToken();
+    clearAuth();
   };
 
   return (
@@ -55,7 +33,7 @@ export const Auth = ({token, delToken}) => {
               src={auth.img}
               title={auth.name}
               alt={`Аватар ${auth.name}`}
-              onClick={handleClick}
+              onClick={getOut}
             />
           </button>
         ) : (
@@ -67,7 +45,7 @@ export const Auth = ({token, delToken}) => {
         showBtn ?
           <button
             className={style.logout}
-            onClick={delToken}
+            onClick={logOut}
           >
             Выйти
           </button> :
@@ -75,9 +53,4 @@ export const Auth = ({token, delToken}) => {
       }
     </div>
   );
-};
-
-Auth.propTypes = {
-  token: PropTypes.string,
-  delToken: PropTypes.func,
 };
