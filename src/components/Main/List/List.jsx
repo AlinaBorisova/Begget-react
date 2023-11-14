@@ -1,5 +1,6 @@
 import style from './List.module.css';
 import Post from './Post';
+import {useBest} from '../../../hooks/useBest';
 
 export const List = () => {
   const postsData = [
@@ -36,12 +37,13 @@ export const List = () => {
       id: '789',
     },
   ];
+  useBest();
 
   return (
     <ul className={style.list}>
       {postsData.map(postsData => (
         <Post key={postsData.id} postData={postsData} />
-      ))};
+      ))}
     </ul>
   );
 };
