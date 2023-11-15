@@ -3,7 +3,6 @@ import Main from './components/Main';
 import {TokenContextProvider} from './context/tokenContext';
 import {AuthContextProvider} from './context/authContext';
 
-
 function App() {
   console.log('app');
   return (

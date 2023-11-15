@@ -3,13 +3,13 @@ import {URL_API} from '../api/const';
 import {tokenContext} from '../context/tokenContext';
 
 export const useBest = () => {
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState('');
   const {token} = useContext(tokenContext);
 
-  console.log(token);
-
   useEffect(() => {
-    fetch(`${URL_API}/best?limit=4`, {
+    if (!token) return;
+
+    fetch(`${URL_API}/best`, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `bearer ${token}`,
@@ -23,11 +23,10 @@ export const useBest = () => {
         return response.json();
       })
       .then(data => {
-        console.log('data', data);
         setPost(data);
       })
       .catch(error => console.log(error));
   }, [token]);
 
-  return [post, setPost];
+  if (post) return post.data;
 };
