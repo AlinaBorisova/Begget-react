@@ -1,39 +1,39 @@
-@import '~normalize.css';
+@import "~normalize.css";
 
 @font-face {
-  font-family: 'Merriweather Sans';
+  font-family: "Merriweather Sans";
   font-style: normal;
   font-weight: 400;
-  src: local(''),
-  url('fonts/merriweather-sans-v20-latin_cyrillic-ext-regular.woff2')
-  format('woff2'),
+  src: local(""),
+  url("fonts/merriweather-sans-v20-latin_cyrillic-ext-regular.woff2")
+  format("woff2"),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
-  url('fonts/merriweather-sans-v20-latin_cyrillic-ext-regular.woff')
-  format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  url("fonts/merriweather-sans-v20-latin_cyrillic-ext-regular.woff")
+  format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 @font-face {
-  font-family: 'Merriweather Sans';
+  font-family: "Merriweather Sans";
   font-style: normal;
   font-weight: 500;
-  src: local(''),
-  url('fonts/merriweather-sans-v20-latin_cyrillic-ext-500.woff2')
-  format('woff2'),
+  src: local(""),
+  url("fonts/merriweather-sans-v20-latin_cyrillic-ext-500.woff2")
+  format("woff2"),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
-  url('fonts/merriweather-sans-v20-latin_cyrillic-ext-500.woff')
-  format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  url("fonts/merriweather-sans-v20-latin_cyrillic-ext-500.woff")
+  format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 @font-face {
-  font-family: 'Merriweather Sans';
+  font-family: "Merriweather Sans";
   font-style: normal;
   font-weight: 700;
-  src: local(''),
-  url('fonts/merriweather-sans-v20-latin_cyrillic-ext-700.woff2')
-  format('woff2'),
+  src: local(""),
+  url("fonts/merriweather-sans-v20-latin_cyrillic-ext-700.woff2")
+  format("woff2"),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
-  url('fonts/merriweather-sans-v20-latin_cyrillic-ext-700.woff')
-  format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  url("fonts/merriweather-sans-v20-latin_cyrillic-ext-700.woff")
+  format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 :root {
@@ -118,3 +118,4 @@ iframe {
   width: 1px;
   overflow: hidden;
 }
+

@@ -7,6 +7,7 @@ export const List = () => {
   const {post} = useContext(postContext);
 
   if (post) {
+    // console.log(post);
     return (
       <ul className={style.list}>
         {post.children.map(postsData => (
