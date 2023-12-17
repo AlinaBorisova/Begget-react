@@ -8,7 +8,6 @@ import Comments from './Comments';
 import {useCommentsData} from '../../hooks/useCommentsData';
 import {Text} from '../../UI/Text';
 import FormComment from './FormComment';
-// не работает клик по крестику
 
 export const Modal = ({id, closeModal}) => {
   const overlayRef = useRef(null);
@@ -58,7 +57,7 @@ export const Modal = ({id, closeModal}) => {
               <Text As='p' className={style.author}>{post?.author}</Text>
               <FormComment />
               <Comments comments={comments} />
-              <button className={style.close}>
+              <button className={style.close} onClick={closeModal}>
                 <CloseIcon />
               </button>
             </> : (<h2>Идет загрузка...</h2>)
