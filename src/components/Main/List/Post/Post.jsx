@@ -1,5 +1,5 @@
 import style from './Post.module.css';
-// import notphoto from './img/notphoto.jpg';
+import notphoto from './img/notphoto.jpg';
 import PropTypes from 'prop-types';
 // import formatDate from '../../../../utils/formatDate';
 import Content from './Content';
@@ -10,6 +10,7 @@ import Date from './Date';
 
 export const Post = ({postData}) => {
   const {
+    id,
     thumbnail,
     title,
     author,
@@ -20,8 +21,11 @@ export const Post = ({postData}) => {
 
   return (
     <li className={style.post}>
-      <Thumbnail thumbnail={thumbnail} title={title}/>
-      <Content title={title} author={author} markdown={markdown} />
+      <Thumbnail thumbnail={
+          thumbnail.match(/([^\s]+(?=\.(jpg|jpeg))\.)/) ?
+          thumbnail : notphoto
+      } title={title}/>
+      <Content id={id} title={title} author={author} markdown={markdown} />
       <DeleteButton />
       <Rating ups={ups}/>
       <Date date={date} />
