@@ -1,0 +1,35 @@
+.form {
+    border-top: 1px solid var(--greyD9);
+    border-bottom: 1px solid var(--greyD9);
+    padding: 15px 0;
+}
+
+.textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: block;
+    margin-left: auto;
+    padding: 10px 20px;
+    border-radius: 8px;
+    outline: none;
+    background-color: var(--orange);
+    color: var(--white);
+    border: 1px solid transparent
+}
+
+.btn:hover {
+    background-color: var(--blue);
+}
+
+.btn:focus {
+    border-color: var(--blue);
+}
+
+.btn:active {
+    background-color: var(--green);
+    border-color: var(--green);
+}
