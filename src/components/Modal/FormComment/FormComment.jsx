@@ -1,9 +1,11 @@
 import style from './FormComment.module.css';
 import {Text} from '../../../UI/Text';
-import {useRef, useState} from 'react';
+import {useContext, useRef, useState} from 'react';
+import {authContext} from '../../../context/authContext';
 
 export const FormComment = () => {
   const textareaRef = useRef(null);
+  const {auth} = useContext(authContext);
   const [isFormCommentsOpen, setFormCommentsOpen] = useState(false);
 
   const handleOpen = () => {
@@ -25,7 +27,7 @@ export const FormComment = () => {
       {isFormCommentsOpen &&
         <>
           <Text as='h3' size={14} tsize={18}>
-            Имя авторизованного пользователя
+            {auth.name}
           </Text>
           <textarea className={style.textarea} ref={textareaRef}></textarea>
         </>
