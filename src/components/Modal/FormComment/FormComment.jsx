@@ -11,13 +11,15 @@ export const FormComment = () => {
   const {auth} = useContext(authContext);
   const [isFormCommentsOpen, setFormCommentsOpen] = useState(false);
 
-  const handleOpen = () => {
+  const handleOpen = (event) => {
+    event.preventDefault();
     setFormCommentsOpen(true);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
     console.log(value);
+    setFormCommentsOpen(false);
   };
 
   const handleChange = event => {
