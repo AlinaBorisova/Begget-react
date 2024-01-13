@@ -4,7 +4,7 @@ import {urlAuth} from '../../../api/auth';
 import {Text} from '../../../UI/Text';
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {deleteToken} from '../../../store/tokenReducer';
+import {deleteToken} from '../../../store/token/tokenAction';
 import {useAuth} from '../../../hooks/useAuth';
 import {Preloader} from '../../../UI/Preloader/Preloader';
 

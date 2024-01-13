@@ -16,6 +16,7 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        error: '',
       };
     case AUTH_REQUEST_SUCCESS:
       return {

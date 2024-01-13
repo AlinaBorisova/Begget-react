@@ -1,7 +1,7 @@
 import Header from './components/Header';
 import Main from './components/Main';
 import {useDispatch} from 'react-redux';
-import {updateToken} from './store/tokenReducer';
+import {updateToken} from './store/token/tokenAction';
 import {getToken} from './api/token';
 
 function App() {

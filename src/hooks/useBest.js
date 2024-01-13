@@ -12,6 +12,5 @@ export const useBest = () => {
     dispatch(postDataRequestAsync());
   }, [token]);
 
-  // if (post) return post.data;
   return [posts, loading];
 };
