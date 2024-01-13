@@ -7,6 +7,6 @@ export const Logo = () => (
       className={style.logo}
       src={logo}
       alt="Logo Blogget"
-      onClick={(event) => event.preventDefault()}/>
+    />
   </a>
 );

@@ -58,7 +58,8 @@ export const commentsDataRequestAsync = (id) => (dispatch, getState) => {
                           }
                         ]
                       }
-                }, {
+                },
+                {
                   data: {children}
                 }
               ]
