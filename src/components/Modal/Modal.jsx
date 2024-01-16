@@ -9,20 +9,23 @@ import {useCommentsData} from '../../hooks/useCommentsData';
 import {Text} from '../../UI/Text';
 import FormComment from './FormComment';
 import Preloader from '../../UI/Preloader';
+import {useNavigate, useParams} from 'react-router-dom';
 
-export const Modal = ({id, closeModal}) => {
+export const Modal = () => {
+  const {id, page} = useParams();
+  const navigate = useNavigate();
   const overlayRef = useRef(null);
   const [status, post, comments] = useCommentsData(id);
 
   const handleClick = e => {
     const target = e.target;
     if (target === overlayRef.current) {
-      closeModal();
+      navigate(`/category/${page}`);
     }
   };
 
   const handleEsc = ({key}) => {
-    if (key === 'Escape') closeModal();
+    if (key === 'Escape') navigate(`/category/${page}`);
   };
 
   useEffect(() => {
@@ -58,7 +61,11 @@ export const Modal = ({id, closeModal}) => {
             <Text As='p' className={style.author}>{post?.author}</Text>
             <FormComment />
             <Comments comments={comments} />
-            <button className={style.close} onClick={closeModal}>
+            <button className={style.close}
+              onClick={() => {
+                navigate(`/category/${page}`);
+              }}
+            >
               <CloseIcon />
             </button>
           </>
