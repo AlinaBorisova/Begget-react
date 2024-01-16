@@ -8,6 +8,7 @@ const initialState = {
   loading: false,
   data: {},
   error: '',
+  status: '',
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -24,12 +25,14 @@ export const authReducer = (state = initialState, action) => {
         loading: false,
         data: action.data,
         error: '',
+        status: 'loaded',
       };
     case AUTH_REQUEST_ERROR:
       return {
         ...state,
         loading: false,
         error: action.error,
+        status: 'error',
       };
     case AUTH_LOGOUT:
       return {

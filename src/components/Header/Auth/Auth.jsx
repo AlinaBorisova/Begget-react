@@ -2,17 +2,28 @@ import style from './Auth.module.css';
 import {ReactComponent as LoginIcon} from './img/login.svg';
 import {urlAuth} from '../../../api/auth';
 import {Text} from '../../../UI/Text';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {deleteToken} from '../../../store/token/tokenAction';
 import {useAuth} from '../../../hooks/useAuth';
 import {Preloader} from '../../../UI/Preloader/Preloader';
+import {useNavigate} from 'react-router-dom';
 
 export const Auth = () => {
   const dispatch = useDispatch();
-
   const [showBtn, setShowBtn] = useState(false);
-  const [auth, loading, clearAuth] = useAuth();
+  const [auth, loading, clearAuth, status, error] = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (status === 'loaded') {
+      navigate('/');
+    }
+  }, [status]);
+
+  useEffect(() => {
+    if (status === 'error') console.log(error);
+  }, [error]);
 
   const getOut = () => {
     if (!showBtn) {
@@ -26,7 +37,7 @@ export const Auth = () => {
     dispatch(deleteToken());
     clearAuth();
     setShowBtn(false);
-    window.location.href = location.origin;
+    navigate('/');
   };
 
   return (
@@ -47,15 +58,8 @@ export const Auth = () => {
               <LoginIcon className={style.svg}/>
             </Text>
         )}
-      {
-        showBtn ?
-          <button
-            className={style.logout}
-            onClick={logOut}
-          >
-            Выйти
-          </button> :
-            null
+      {showBtn &&
+        <button className={style.logout} onClick={logOut}> Выйти </button>
       }
     </div>
   );
