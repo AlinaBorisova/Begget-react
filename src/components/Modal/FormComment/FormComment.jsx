@@ -2,32 +2,32 @@ import style from './FormComment.module.css';
 import {Text} from '../../../UI/Text';
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {updateComment} from '../../../store/commentsData/commentsDataAction';
+import {commentUpdate} from '../../../store/comment/commentAction';
 import {useAuth} from '../../../hooks/useAuth';
 
 export const FormComment = () => {
-  const value = useSelector(state => state.commentsDataReducer.comment);
+  const value = useSelector(state => state.commentReducer.comment);
   const dispatch = useDispatch();
   const [auth] = useAuth();
-  const [isFormCommentsOpen, setFormCommentsOpen] = useState(false);
+  const [isFormCommentOpen, setFormCommentOpen] = useState(false);
 
   const handleOpen = (event) => {
     event.preventDefault();
-    setFormCommentsOpen(true);
+    setFormCommentOpen(true);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    setFormCommentsOpen(false);
+    setFormCommentOpen(false);
   };
 
   const handleChange = event => {
-    dispatch(updateComment(event.target.value));
+    dispatch(commentUpdate(event.target.value));
   };
 
   return (
     <form className={style.form}>
-      {isFormCommentsOpen &&
+      {isFormCommentOpen &&
         <>
           <Text as='h3' size={14} tsize={18}>
             {auth.name}
@@ -39,9 +39,9 @@ export const FormComment = () => {
         </>
       }
       <button className={style.btn} onClick={
-        isFormCommentsOpen ? handleSubmit : handleOpen
+        isFormCommentOpen ? handleSubmit : handleOpen
       }>
-        {isFormCommentsOpen ? 'Отправить' : 'Написать комментарий'}
+        {isFormCommentOpen ? 'Отправить' : 'Написать комментарий'}
       </button>
     </form>
   );
