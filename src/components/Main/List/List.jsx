@@ -4,6 +4,7 @@ import {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {postDataRequestAsync} from '../../../store/postData/postDataAction';
 import {Outlet, useParams} from 'react-router-dom';
+import {postDataSlice} from '../../../store/postData/postDataSlice';
 
 export const List = () => {
   const posts = useSelector(state => state.postDataReducer.posts);
@@ -12,7 +13,7 @@ export const List = () => {
   const {page} = useParams();
 
   useEffect(() => {
-    dispatch(postDataRequestAsync(page));
+    dispatch(postDataSlice.actions.changePage(page));
   }, [page]);
 
   useEffect(() => {
