@@ -30,26 +30,7 @@ export const commentsRequestAsync = createAsyncThunk(
               data: {children}
             }
           ]
-        }
-            // .then((
-            //     {
-            //       data:
-            //               [
-            //                 {
-            //                   data:
-            //                           {
-            //                             children: [
-            //                               {
-            //                                 data: post
-            //                               }
-            //                             ]
-            //                           }
-            //                 }, {
-            //                   data: {children}
-            //                 }
-            //               ]
-            //     }
-        ) => {
+        }) => {
           const comments = children.map(item => item.data);
           return {post, comments};
         },
