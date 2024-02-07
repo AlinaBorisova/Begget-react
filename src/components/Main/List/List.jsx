@@ -2,24 +2,32 @@ import style from './List.module.css';
 import Post from './Post';
 import {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {postDataRequestAsync} from '../../../store/postData/postDataAction';
+import {
+  postDataRequest,
+  changePage,
+  searchRequest
+} from '../../../store/postData/postDataSlice';
 import {Outlet, useParams} from 'react-router-dom';
-import {postDataSlice} from '../../../store/postData/postDataSlice';
 
 export const List = () => {
   const posts = useSelector(state => state.postDataReducer.posts);
+  const search = useSelector(state => state.postDataReducer.search);
   const endList = useRef(null);
   const dispatch = useDispatch();
   const {page} = useParams();
 
   useEffect(() => {
-    dispatch(postDataSlice.actions.changePage(page));
-  }, [page]);
+    dispatch(changePage(page));
+  }, [dispatch, page]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        dispatch(postDataRequestAsync());
+        if (search) {
+          dispatch(searchRequest(search));
+        } else {
+          dispatch(postDataRequest());
+        }
       }
     }, {
       rootMargin: '100px',
@@ -32,7 +40,7 @@ export const List = () => {
         observer.unobserve(endList.current);
       }
     };
-  }, [endList.current]);
+  }, [dispatch, search, endList.current]);
 
   return (
     <>
